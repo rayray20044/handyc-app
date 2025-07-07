@@ -1,0 +1,75 @@
+{
+  "kind": "collectionType",
+  "collectionName": "locations",
+  "info": {
+    "singularName": "location",
+    "pluralName": "locations",
+    "displayName": "Location",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "Description": {
+      "type": "text"
+    },
+    "NameOfLocation": {
+      "type": "string",
+      "required": true
+    },
+    "Address": {
+      "type": "string",
+      "required": true
+    },
+    "Media": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "LocationOverView": {
+      "type": "media",
+      "multiple": true,
+      "required": true,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "Capacity": {
+      "type": "biginteger",
+      "required": true
+    },
+    "Size": {
+      "type": "decimal",
+      "required": true
+    },
+    "Website": {
+      "type": "string"
+    },
+    "events": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::event.event",
+      "mappedBy": "location"
+    },
+    "ContactInfo": {
+      "displayName": "ContactInfo",
+      "type": "component",
+      "repeatable": false,
+      "component": "shared.contact-info"
+    },
+    "accessibility_needs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::accessibility-need.accessibility-need",
+      "mappedBy": "locations"
+    }
+  }
+}

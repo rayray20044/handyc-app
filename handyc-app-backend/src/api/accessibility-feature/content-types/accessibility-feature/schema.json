@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "accessibility_features",
+  "info": {
+    "singularName": "accessibility-feature",
+    "pluralName": "accessibility-features",
+    "displayName": "AccessibilityFeature"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "Description": {
+      "type": "blocks",
+      "required": true
+    },
+    "accessibility_needs": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::accessibility-need.accessibility-need",
+      "inversedBy": "accessibility_features"
+    },
+    "ticket": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::ticket.ticket",
+      "inversedBy": "accessibility_features"
+    }
+  }
+}

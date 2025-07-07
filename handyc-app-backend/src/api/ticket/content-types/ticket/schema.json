@@ -1,0 +1,73 @@
+{
+  "kind": "collectionType",
+  "collectionName": "tickets",
+  "info": {
+    "singularName": "ticket",
+    "pluralName": "tickets",
+    "displayName": "Ticket"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "ticketStatus": {
+      "type": "enumeration",
+      "enum": [
+        "Pending ",
+        "Confirmed",
+        "Cancelled"
+      ],
+      "required": true,
+      "default": "Pending "
+    },
+    "Price": {
+      "type": "decimal",
+      "required": true
+    },
+    "Format": {
+      "type": "enumeration",
+      "enum": [
+        "digital",
+        "physical "
+      ]
+    },
+    "zone": {
+      "type": "string",
+      "required": true
+    },
+    "Seat": {
+      "type": "string",
+      "required": true
+    },
+    "refundPolicy": {
+      "type": "blocks",
+      "required": true
+    },
+    "ticketType": {
+      "type": "enumeration",
+      "enum": [
+        "general admission",
+        "VIP",
+        "discounted"
+      ]
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "tickets"
+    },
+    "event": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::event.event",
+      "inversedBy": "tickets"
+    },
+    "accessibility_features": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::accessibility-feature.accessibility-feature",
+      "mappedBy": "ticket"
+    }
+  }
+}
